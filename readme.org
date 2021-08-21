@@ -1,0 +1,40 @@
+#+TITLE: DeXpression
+
+* Overview
+
+* Model Architecture
+
+* Results
+I performed a *5-fold* cross-validation (as opposed to 10-fold) to achieve the following maximum training and testing accuracies in each of the folds. The table below summarizes the results I obtained.
+
+| Fold | Training |    Test | Average Training Loss | Average Testing Loss |
+|    1 |  98.128% | 98.979% |               0.08285 |              0.10431 |
+|    2 |  99.787% | 98.298% |               0.00636 |              0.09822 |
+|    3 |  99.128% | 97.499% |               0.03878 |              0.19127 |
+|    4 |  99.107% |    100% |               0.03349 |              0.01904 |
+|    5 |  99.468% | 98.979% |               0.01999 |              0.08994 |
+
+The following plots help in visualizing the losses and accuracies better.
+#+CAPTION: Training and testing accuracies
+[[./results/accuracy.png]]
+
+#+CAPTION: Training and testing losses
+[[./results/loss.png]]
+
+For gauging the /precision-recall/ metrics of the model across all classes (ie - different emotions), I have constructed plots of the *Confusion Matrix* for each of the 5 folds using the =seaborn= library.
+#+CAPTION: Fold-1
+[[./results/fold-1.png]]
+
+#+CAPTION: Fold-2
+[[./results/fold-2.png]]
+
+#+CAPTION: Fold-3
+[[./results/fold-3.png]]
+
+#+CAPTION: Fold-4
+[[./results/fold-4.png]]
+
+#+CAPTION: Fold-5
+[[./results/fold-5.png]]
+
+* References
