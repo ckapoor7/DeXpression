@@ -36,21 +36,8 @@ The following plots help in visualizing the losses and accuracies better.
 [[./results/loss.png]]
 
 For gauging the /precision-recall/ metrics of the model across all classes (ie - different emotions), I have constructed plots of the *Confusion Matrix* for each of the 5 folds using the =seaborn= library.
-#+CAPTION: Fold-1
-[[./results/fold-1.png]]
-
-#+CAPTION: Fold-2
-[[./results/fold-2.png]]
-
-#+CAPTION: Fold-3
-[[./results/fold-3.png]]
-
-#+CAPTION: Fold-4
-[[./results/fold-4.png]]
-
-#+CAPTION: Fold-5
-[[./results/fold-5.png]]
-
+#+CAPTION: Confusion matrices
+[[./results/final.png]]
 These results follow in close conjunction with those stated in the original paper.
 
 
