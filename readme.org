@@ -10,10 +10,13 @@ I trained the model on the *Extended Cohn-Kanade (CK+)* dataset, which has *7* l
 ** Preprocessing
 The dataset consists of (labelled) images having a resolution of either *640x490* or *640x480* pixels. Before feeding this into the network, the images are downsampled to a resolution of *224x224* (input dimensions of the initial layer).
 
-The RGB images are converted to =numpy= arrays (which is saved in a local directory for bookkeeping purposes). These =numpy= arrays are then converted to /"Torch tensors"/ of type =float=, whereas the class labels are subject to *one-hot encoding* (Torch tensors of =int= type).
+The RGB images are converted to =numpy= arrays (which is saved in a local directory for bookkeeping purposes). These =numpy= arrays are then converted to /Torch tensors/ of type =float=, whereas the class labels are subject to *one-hot encoding* (Torch tensors of =int= type).
 
 
 * Model Architecture
+The proposed network architecture is unique, since it proposes *two parallel feature extraction blocks* (labelled FeatEx), which are at the core of the entire structure. This is somewhat similar to the idea proposed by the *GoogleNet* architecture. The following diagram gives a much clearer picture of the working.
+[[./results/network.png]]
+
 
 * Results
 I performed a *5-fold* cross-validation (as opposed to 10-fold) to achieve the following maximum training and testing accuracies in each of the folds. The table below summarizes the results I obtained.
