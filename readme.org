@@ -1,18 +1,29 @@
 #+TITLE: DeXpression
 
 * Overview
+Recognition of facial expressions is an increasingly important task in the domain of *human-computer interaction*, humanoid robots and safety systems among other things. Unlike previous attempts at this problem where handcrafted *facial landmarks* are used to detect emotions, this approach relies on *Convolutional Neural Networks* (CNNs) to extract facial features which aid in determining the emotions exhibited. From the results obtained, it is easy to see that this approach outperforms all previous work by an extremely large margin.
+
+
+* Dataset
+I trained the model on the *Extended Cohn-Kanade (CK+)* dataset, which has *7* labelled expression classes (anger, contempt, disgust, fear, happiness, sadness, surprise), which is considered to be a standard choice for tasks involving facial expression classification methods.
+
+** Preprocessing
+The dataset consists of (labelled) images having a resolution of either *640x490* or *640x480* pixels. Before feeding this into the network, the images are downsampled to a resolution of *224x224* (input dimensions of the initial layer).
+
+The RGB images are converted to =numpy= arrays (which is saved in a local directory for bookkeeping purposes). These =numpy= arrays are then converted to /"Torch tensors"/ of type =float=, whereas the class labels are subject to *one-hot encoding* (Torch tensors of =int= type).
+
 
 * Model Architecture
 
 * Results
 I performed a *5-fold* cross-validation (as opposed to 10-fold) to achieve the following maximum training and testing accuracies in each of the folds. The table below summarizes the results I obtained.
 
-| Fold | Training |    Test | Average Training Loss | Average Testing Loss |
-|    1 |  98.128% | 98.979% |               0.08285 |              0.10431 |
-|    2 |  99.787% | 98.298% |               0.00636 |              0.09822 |
-|    3 |  99.128% | 97.499% |               0.03878 |              0.19127 |
-|    4 |  99.107% |    100% |               0.03349 |              0.01904 |
-|    5 |  99.468% | 98.979% |               0.01999 |              0.08994 |
+| Fold | Training Accuracy | Testing Accuracy | Average Training Loss | Average Testing Loss |
+|    1 |           98.128% |          98.979% |               0.08285 |              0.10431 |
+|    2 |           99.787% |          98.298% |               0.00636 |              0.09822 |
+|    3 |           99.128% |          97.499% |               0.03878 |              0.19127 |
+|    4 |           99.107% |             100% |               0.03349 |              0.01904 |
+|    5 |           99.468% |          98.979% |               0.01999 |              0.08994 |
 
 The following plots help in visualizing the losses and accuracies better.
 #+CAPTION: Training and testing accuracies
@@ -37,4 +48,29 @@ For gauging the /precision-recall/ metrics of the model across all classes (ie -
 #+CAPTION: Fold-5
 [[./results/fold-5.png]]
 
+These results follow in close conjunction with those stated in the original paper.
+
+
 * References
+As the name suggests, I made use of the paper [[https://arxiv.org/pdf/1509.05371.pdf][DeXpression: Deep Convolutional Neural Network for Expression Recognition]] (P.Burker /et. al./). There seem to be a scarcity in the research work that is done specifically tailored towards this task.
+
+All due credit for the ideation of the network architecture, preprocessing etc. is attributed to the original authors.
+#+begin_src
+@article{DBLP:journals/corr/BurkertTADL15,
+  author    = {Peter Burkert and
+               Felix Trier and
+               Muhammad Zeshan Afzal and
+               Andreas Dengel and
+               Marcus Liwicki},
+  title     = {DeXpression: Deep Convolutional Neural Network for Expression Recognition},
+  journal   = {CoRR},
+  volume    = {abs/1509.05371},
+  year      = {2015},
+  url       = {http://arxiv.org/abs/1509.05371},
+  archivePrefix = {arXiv},
+  eprint    = {1509.05371},
+  timestamp = {Fri, 13 Sep 2019 15:47:17 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/BurkertTADL15.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+#+end_src
